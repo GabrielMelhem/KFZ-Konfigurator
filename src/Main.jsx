@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { fetchData } from './api';
 
-const main = () => {
+const Main = () => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
@@ -18,10 +19,10 @@ const main = () => {
 
   return (
     <div>
-      main
+      main 
       {/* Render data */}
     </div>
   )
 }
 
-export default main
+export default Main

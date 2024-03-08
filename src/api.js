@@ -1,6 +1,5 @@
-import config from './config';
 
-const apiUrl = `${config.baseUrl}/api`;
+const apiUrl = `${process.env.REACT_APP_API_URL}/api`;
 
 export const fetchData = async () => {
     try {
