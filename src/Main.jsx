@@ -19,7 +19,7 @@ const Main = () => {
 
   return (
     <div>
-      main 
+      Main 
       {/* Render data */}
     </div>
   )
