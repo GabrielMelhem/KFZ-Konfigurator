@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 const apiUrl = `${process.env.REACT_APP_API_URL}/api/v1`;
 
-const MotorleistungenListe = () => {
+const Motorleistung = () => {
   const [motorleistungen, setMotorleistungen] = useState([]);
 
 useEffect(() => {
@@ -32,10 +32,10 @@ useEffect(() => {
 
   return (
     <div>
-      MotorleistungenListe
+      Motorleistungen
       {motorleistungenList}
     </div>
   );
 };
 
-export default MotorleistungenListe;
+export default Motorleistung;

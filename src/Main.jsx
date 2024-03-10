@@ -1,5 +1,9 @@
 import React from 'react';
-import MotorleistungenListe from './components/MotorleistungenListe';
+import Fahrzeuge from './components/Fahrzeuge';
+import Felgen from './components/Felgen';
+import Lackierung from './components/Lackierung';
+import Motorleistung from './components/Motorleistung';
+import Sonderausstattungen from './components/Sonderausstattungen';
 
 
 const Main = () => {
@@ -7,7 +11,11 @@ const Main = () => {
   return (
     <div>
       Main 
-      <MotorleistungenListe />
+      <Motorleistung />
+      <Fahrzeuge />
+      <Lackierung />
+      <Felgen />
+      <Sonderausstattungen />
     </div>
   )
 }
