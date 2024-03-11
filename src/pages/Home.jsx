@@ -25,25 +25,24 @@ const Home = ({ activeTab, onNextClick }) => {
   };
   return (
     <>
-    <div>
-      <h1 className="flex flex-col items-center mt-8 text-3xl mb-4">Konfigurieren Sie Ihren Fahrzeuge</h1>
       <div>
-        <h2>Content for {activeTab} Tab</h2>
+        <h1 className="flex flex-col items-center mt-8 text-3xl mb-4">
+          Konfigurieren Sie Ihren Fahrzeuge
+        </h1>
         <div>
-        {renderContent()}
+          <div>{renderContent()}</div>
+
+          {activeTab !== "Zusammenfassung" && (
+            <button
+              onClick={onNextClick}
+              className="bg-blue-800 text-white px-4 py-2 rounded focus:outline-none m-5 "
+            >
+              Nächste Schritte
+            </button>
+          )}
         </div>
-        
-        {activeTab !== "Zusammenfassung" && (
-          <button
-            onClick={onNextClick}
-            className="bg-blue-800 text-white px-4 py-2 rounded focus:outline-none m-5 "
-          >
-            Next
-          </button>
-        )}
       </div>
-    </div>
-    <Footer />
+      <Footer />
     </>
   );
 };

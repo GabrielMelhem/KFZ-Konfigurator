@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import CarCard from "./CarCard";
 
 const apiUrl = `${process.env.REACT_APP_API_URL}/api/v1`;
 
@@ -22,34 +23,14 @@ const Fahrzeuge = () => {
       );
   }, []);
 
-  const fahrzeugeList = fahrzeuge.map((fahrzeug) => {
-    return (
-      <div className="card">
-         <div >
-                  <img
-                    className="w-72 h-72 rounded-xl"
-                    src={''}
-                    alt="Car"
-                  />
-                  <div key={fahrzeug.id} className="py-1">
-                    <h1 className="font-semibold">{fahrzeug.marke}</h1>
-                    <p className="text-gray-700 text-sm">{fahrzeug.modell}</p>
-                    <h1 className="font-semibold">
-                      <span className=" font-normal">
-                        "€"
-                      </span>{" "}
-                      {fahrzeug.preis}
-                    </h1>
-                  </div>
-                </div>
-      </div>
-    );
-  });
-
   return (
     <div>
       Fahrzeuge
-      {fahrzeugeList}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {fahrzeuge.map((fahrzeug) => (
+          <CarCard fahrzeug={fahrzeug} />
+        ))}
+      </div>
     </div>
   );
 };

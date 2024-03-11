@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
-import Navbar from './components/Navbar';
+import React, { useState } from "react";
+import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 
 const Main = () => {
   const [activeTab, setActiveTab] = useState("Marke");
   const [nextButtonVisible, setNextButtonVisible] = useState(true);
-
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -31,7 +30,7 @@ const Main = () => {
       const nextTab = tabsOrder[currentIndex + 1];
       setActiveTab(nextTab);
       setNextButtonVisible(true);
-    }else {
+    } else {
       // If no next tab, hide the "Next" button
       setNextButtonVisible(false);
     }
