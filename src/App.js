@@ -4,10 +4,9 @@ import Main from './Main';
 
 function App() {
   return (
-    <div className="App">
-        KFZ-Konfigurator
+    <h1 className="App">
         <Main />
-    </div>
+    </h1>
   );
 }
 
