@@ -1,21 +1,50 @@
 import React from "react";
+import Fahrzeuge from "../components/Fahrzeuge";
+import Felgen from "../components/Felgen";
+import Footer from "../components/Footer";
+import Lackierung from "../components/Lackierung";
+import Motorleistung from "../components/Motorleistung";
+import Sonderausstattungen from "../components/Sonderausstattungen";
 
-const Home = ({ activeTab,onNextClick  }) => {
+const Home = ({ activeTab, onNextClick }) => {
+  const renderContent = () => {
+    switch (activeTab) {
+      case "Marke":
+        return <Fahrzeuge />;
+      case "Motoren":
+        return <Motorleistung />;
+      case "Farben":
+        return <Lackierung />;
+      case "Räder":
+        return <Felgen />;
+      case "Sonderausstattung":
+        return <Sonderausstattungen />;
+      default:
+        return null;
+    }
+  };
   return (
-    <div className="flex flex-col items-center mt-8">
-    <h1 className="text-3xl mb-4">Konfigurieren Sie Ihren Volkswagen</h1>
+    <>
     <div>
+      <h1 className="flex flex-col items-center mt-8 text-3xl mb-4">Konfigurieren Sie Ihren Fahrzeuge</h1>
+      <div>
         <h2>Content for {activeTab} Tab</h2>
-         {activeTab !== 'Zusammenfassung' && (
+        <div>
+        {renderContent()}
+        </div>
+        
+        {activeTab !== "Zusammenfassung" && (
           <button
             onClick={onNextClick}
-            className="bg-blue-800 text-white px-4 py-2 rounded focus:outline-none"
+            className="bg-blue-800 text-white px-4 py-2 rounded focus:outline-none m-5 "
           >
             Next
           </button>
-        )} 
+        )}
+      </div>
     </div>
-  </div>
+    <Footer />
+    </>
   );
 };
 

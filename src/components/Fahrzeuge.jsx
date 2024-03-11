@@ -24,10 +24,24 @@ const Fahrzeuge = () => {
 
   const fahrzeugeList = fahrzeuge.map((fahrzeug) => {
     return (
-      <div key={fahrzeug.id}>
-        <p>{fahrzeug.modell}</p>
-        <p>{fahrzeug.marke}</p>
-        <p>{fahrzeug.preis}</p>
+      <div className="card">
+         <div >
+                  <img
+                    className="w-72 h-72 rounded-xl"
+                    src={''}
+                    alt="Car"
+                  />
+                  <div key={fahrzeug.id} className="py-1">
+                    <h1 className="font-semibold">{fahrzeug.marke}</h1>
+                    <p className="text-gray-700 text-sm">{fahrzeug.modell}</p>
+                    <h1 className="font-semibold">
+                      <span className=" font-normal">
+                        "€"
+                      </span>{" "}
+                      {fahrzeug.preis}
+                    </h1>
+                  </div>
+                </div>
       </div>
     );
   });
