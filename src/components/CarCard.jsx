@@ -3,7 +3,7 @@ const CarCard = ({ fahrzeug }) => {
     <div className="max-w-sm rounded overflow-hidden shadow-lg m-4 transition duration-150 ease-in-out transform hover:-translate-y-1 hover:scale-105 hover:shadow-2xl">
       <img className="w-full" src={""} alt={""} />
       <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2">{fahrzeug.marke}</div>
+        {/* <div className="text-xl mb-2">{fahrzeug.marke}</div> */}
         <div className="font-bold text-xl mb-2">{fahrzeug.modell}</div>
         <p className="text-gray-700 text-base">
           Ab {fahrzeug.preis} € inkl. MwSt
