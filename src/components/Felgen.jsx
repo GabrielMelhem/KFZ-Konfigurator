@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 
 const apiUrl = `${process.env.REACT_APP_API_URL}/api/v1`;
 
-const Felgen = () => {
+const Felgen = ({selectedModel}) => {
   const [felgen, setFelgen] = useState([]);
 
   useEffect(() => {
-    fetch(`${apiUrl}/felgen`)
+    fetch(`${apiUrl}/felgen/${selectedModel}`)
       .then((response) => response.json())
       .then((data) => {
         const mappedFelgen = data.map((felge) => ({
@@ -33,6 +33,8 @@ const Felgen = () => {
   return (
     <div>
       Felgen
+      modell: {selectedModel}
+      
       {felgenList}
     </div>
   );

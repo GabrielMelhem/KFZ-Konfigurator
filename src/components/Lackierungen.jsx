@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 
 const apiUrl = `${process.env.REACT_APP_API_URL}/api/v1`;
 
-const Lackierung = () => {
+const Lackierung = ({selectedModel}) => {
   const [lackierung, setLackierung] = useState([]);
 
   useEffect(() => {
-    fetch(`${apiUrl}/lackierungen`)
+    fetch(`${apiUrl}/lackierungen/${selectedModel}`)
       .then((response) => response.json())
       .then((data) => {
         const mappedLackierung = data.map((lackierung) => ({
@@ -32,7 +32,8 @@ const Lackierung = () => {
 
   return (
     <div>
-      Lackierung
+      Lackierung 
+      modell: {selectedModel}
       {lackierungList}
     </div>
   );

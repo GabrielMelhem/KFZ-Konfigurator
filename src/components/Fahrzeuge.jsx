@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import CarCard from "./CarCard";
+import FahrzeugCard from "./FahrzeugCard";
 
 const apiUrl = `${process.env.REACT_APP_API_URL}/api/v1`;
 
-const Fahrzeuge = () => {
-  const [fahrzeugeByMarke, setFahrzeugeByMarke] = useState({});
+const Fahrzeuge = ({onModelSelect}) => {
+const [fahrzeugeByMarke, setFahrzeugeByMarke] = useState({});
 
   useEffect(() => {
     fetch(`${apiUrl}/fahrzeuge`)
@@ -43,7 +43,7 @@ const Fahrzeuge = () => {
           <h2 className="text-xl font-bold my-4 ml-4 text-blue-800">{marke}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
             {fahrzeuge.map((fahrzeug) => (
-              <CarCard key={fahrzeug.id} fahrzeug={fahrzeug} />
+              <FahrzeugCard key={fahrzeug.id} fahrzeug={fahrzeug} onSelect={onModelSelect}/>
             ))}
           </div>
         </div>
