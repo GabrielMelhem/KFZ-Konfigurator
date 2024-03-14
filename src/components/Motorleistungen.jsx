@@ -4,7 +4,6 @@ import MotorleistungCard from "./MotorleistungCard";
 const apiUrl = `${process.env.REACT_APP_API_URL}/api/v1`;
 
 const Motorleistungen = ({ selectedModel }) => {
-  
   const [motorleistungen, setMotorleistungen] = useState([]);
 
   useEffect(() => {
@@ -45,6 +44,9 @@ const Motorleistungen = ({ selectedModel }) => {
             motorleistung={motorleistung}
           />
         ))}
+      </div>
+      <div>
+        <h2>Your current total is: EUR</h2>
       </div>
     </div>
   );

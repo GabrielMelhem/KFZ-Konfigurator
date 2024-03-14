@@ -34,8 +34,14 @@ const Felgen = ({selectedModel}) => {
     <div>
       Felgen
       <div className="text-2xl font-bold  mb-4">{selectedModel}</div>
-      
+      <div>
       {felgenList}
+      </div>
+      
+      <div>
+        <h2>Your current total is: EUR</h2>
+      </div>
+      
     </div>
   );
 };

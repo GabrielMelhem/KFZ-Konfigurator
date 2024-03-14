@@ -3,7 +3,7 @@ import LackierungenCard from "./LackierungenCard";
 
 const apiUrl = `${process.env.REACT_APP_API_URL}/api/v1`;
 
-const Lackierungen = ({selectedModel}) => {
+const Lackierungen = ({ selectedModel }) => {
   const [lackierungen, setLackierungen] = useState([]);
 
   useEffect(() => {
@@ -33,11 +33,16 @@ const Lackierungen = ({selectedModel}) => {
 
   return (
     <div>
-      Lackierung 
+      Lackierung
       <div className="text-2xl font-bold  mb-4">{selectedModel}</div>
-      {lackierungen.map((lackierung)=> (
-        <LackierungenCard lackierung={lackierung} key={lackierung.id}/>
-      ))}
+      <div>
+        {lackierungen.map((lackierung) => (
+          <LackierungenCard lackierung={lackierung} key={lackierung.id} />
+        ))}
+      </div>
+      <div>
+        <h2>Your current total is: EUR</h2>
+      </div>
       {/* {lackierungList} */}
     </div>
   );

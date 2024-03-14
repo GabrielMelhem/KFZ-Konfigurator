@@ -41,6 +41,9 @@ const Sonderausstattungen = ({selectedModel}) => {
           <SonderausstattungCard key={sonderausstattung.id} sonderausstattung={sonderausstattung}/>
         ))}
       </div>
+      <div>
+        <h2>Your current total is: EUR</h2>
+      </div>
     </div>
   );
 };

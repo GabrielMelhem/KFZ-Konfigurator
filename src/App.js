@@ -2,9 +2,10 @@ import {
   Route,
   RouterProvider,
   createBrowserRouter,
-  createRoutesFromElements,
+  createRoutesFromElements
 } from "react-router-dom";
 import "./App.css";
+import { BestellungProvider } from "./context/BestellungContext";
 import ErrorPage from "./pages/ErrorPage";
 import Home from "./pages/Home";
 
@@ -16,7 +17,15 @@ function App() {
       </Route>
     )
   );
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <BestellungProvider>
+        <RouterProvider router={router} />;
+      </BestellungProvider>
+    </>
+  );
 }
+
+
 
 export default App;
