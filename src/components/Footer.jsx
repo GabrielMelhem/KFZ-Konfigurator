@@ -1,6 +1,7 @@
 import React from "react";
 import { FaEnvelope, FaFax, FaHome, FaPhone } from "react-icons/fa";
 import { IoLogoFacebook, IoLogoGithub, IoLogoLinkedin } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -23,7 +24,7 @@ function Footer() {
             <IoLogoLinkedin size={40} />
           </a>
           <a
-            href="https://www..com/in/gabriel-melhem-9b714821a/"
+            href="#"
             className="me-4 text-secondary"
           >
             <IoLogoFacebook size={40} />
@@ -31,13 +32,13 @@ function Footer() {
         </div>
       </section>
       <section className="flex justify-center lg:justify-between p-4 border-b">
-        <div className="mb-4">
-          <h6 className="text-uppercase font-bold mb-4">KFZ Konfigurator</h6>
-          <p>Konfigurieren Sie Ihren Fahrzeuge</p>
+        <div className="flex flex-col">
+          <h6 className="text-uppercase font-bold mb-4 ml-4">KFZ Konfigurator</h6>
+          <p className="ml-8">Konfigurieren Sie Ihren Fahrzeuge</p>
         </div>
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <h6 className="text-uppercase font-bold mb-4">Pages</h6>
-        </div>
+        </div> */}
         <div className="mb-4 flex flex-col">
           <h6 className="text-uppercase font-bold mb-4">Contact</h6>
           <div className="flex items-center mb-2">
@@ -62,10 +63,10 @@ function Footer() {
         className="text-center p-4"
         style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}
       >
-        © 2024 Copyright:Gabriel
-        {/* <Link className="text-secondary font-bold" to="https://www.linkedin.com/in/gabriel-melhem-9b714821a/">
-          Gabriel
-        </Link> */}
+        © 2024 Copyright: 
+        <Link className="text-secondary font-bold" to="https://www.linkedin.com/in/gabriel-melhem-9b714821a/">
+              Gabriel
+        </Link> 
       </div>
     </footer>
   );

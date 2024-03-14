@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
+import LackierungenCard from "./LackierungenCard";
 
 const apiUrl = `${process.env.REACT_APP_API_URL}/api/v1`;
 
-const Lackierung = ({selectedModel}) => {
-  const [lackierung, setLackierung] = useState([]);
+const Lackierungen = ({selectedModel}) => {
+  const [lackierungen, setLackierungen] = useState([]);
 
   useEffect(() => {
     fetch(`${apiUrl}/lackierungen/${selectedModel}`)
@@ -14,29 +15,32 @@ const Lackierung = ({selectedModel}) => {
           farbe: lackierung.farbe,
           preis: lackierung.preis,
         }));
-        setLackierung(mappedLackierung);
+        setLackierungen(mappedLackierung);
       })
       .catch((error) =>
         console.error("Fehler beim Abrufen von Lackierung:", error)
       );
   }, []);
 
-  const lackierungList = lackierung.map((lackierung) => {
-    return (
-      <div key={lackierung.id}>
-        <p>{lackierung.farbe}</p>
-        <p>{lackierung.preis}</p>
-      </div>
-    );
-  });
+  // const lackierungList = lackierung.map((lackierung) => {
+  //   return (
+  //     <div key={lackierung.id}>
+  //       <p>{lackierung.farbe}</p>
+  //       <p>{lackierung.preis}</p>
+  //     </div>
+  //   );
+  // });
 
   return (
     <div>
       Lackierung 
-      modell: {selectedModel}
-      {lackierungList}
+      <div className="text-2xl font-bold  mb-4">{selectedModel}</div>
+      {lackierungen.map((lackierung)=> (
+        <LackierungenCard lackierung={lackierung} key={lackierung.id}/>
+      ))}
+      {/* {lackierungList} */}
     </div>
   );
 };
 
-export default Lackierung;
+export default Lackierungen;

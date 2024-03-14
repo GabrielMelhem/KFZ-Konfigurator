@@ -23,7 +23,7 @@ const Home = () => {
       case "Räder":
         return <Felgen selectedModel={selectedModel} />;
       case "Sonderausstattung":
-        return <Sonderausstattungen />;
+        return <Sonderausstattungen selectedModel={selectedModel}/>;
       default:
         return null;
     }

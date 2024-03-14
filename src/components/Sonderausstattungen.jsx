@@ -4,7 +4,7 @@ import SonderausstattungCard from './SonderausstattungCard';
 
 const apiUrl = `${process.env.REACT_APP_API_URL}/api/v1`;
 
-const Sonderausstattungen = ({selectedSonderausstattung}) => {
+const Sonderausstattungen = ({selectedModel}) => {
   const [sonderausstattungen, setSonderausstattungen] = useState([]);
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const Sonderausstattungen = ({selectedSonderausstattung}) => {
   return (
     <div>
       sonderausstattungen
-      <div className="text-2xl font-bold  mb-4">{selectedSonderausstattung}</div>
+      <div className="text-2xl font-bold  mb-4">{selectedModel}</div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
         {sonderausstattungen.map((sonderausstattung) => (
           <SonderausstattungCard key={sonderausstattung.id} sonderausstattung={sonderausstattung}/>

@@ -33,7 +33,7 @@ const Felgen = ({selectedModel}) => {
   return (
     <div>
       Felgen
-      modell: {selectedModel}
+      <div className="text-2xl font-bold  mb-4">{selectedModel}</div>
       
       {felgenList}
     </div>
