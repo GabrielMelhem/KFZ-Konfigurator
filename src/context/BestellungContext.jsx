@@ -10,6 +10,7 @@ export const BestellungProvider = ({ children }) => {
     felgen: null,
     sonderausstattung: [],
     gesamtpreis: 0,
+    date: new Date().toDateString(),
   });
 
   const updateBestellung = (key, value) => {
@@ -18,6 +19,7 @@ export const BestellungProvider = ({ children }) => {
       const updatedBestellung = {
         ...prevBestellung,
         [key]: value,
+        date: new Date().toDateString(),
       };
 
       // Calculate and update the total price

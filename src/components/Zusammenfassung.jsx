@@ -64,6 +64,10 @@ const Zusammenfassung = () => {
         <h3 className="text-2xl font-bold text-center md:text-left">Gesamtpreis: {bestellung.gesamtpreis} €</h3>
       </div>
 
+      <div className='mt-6'>
+        <p>Bestellung Datum: {bestellung.date}</p>
+     </div>
+
     </div>
   );
 };
