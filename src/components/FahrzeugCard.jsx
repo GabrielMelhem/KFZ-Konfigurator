@@ -1,6 +1,6 @@
 const FahrzeugCard = ({ fahrzeug , onSelect}) => {
   return (
-    <div onClick={() => onSelect(fahrzeug.modell)} className="max-w-sm rounded overflow-hidden shadow-lg m-4 transition duration-150 ease-in-out transform hover:-translate-y-1 hover:scale-105 hover:shadow-2xl">
+    <div onClick={() => onSelect(fahrzeug)} className="max-w-sm rounded overflow-hidden shadow-lg m-4 transition duration-150 ease-in-out transform hover:-translate-y-1 hover:scale-105 hover:shadow-2xl">
       <img className="w-full" src={""} alt={""} />
       <div className="px-6 py-4">
         {/* <div className="text-xl mb-2">{fahrzeug.marke}</div> */}

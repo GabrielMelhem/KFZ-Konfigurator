@@ -1,16 +1,21 @@
-import { useState } from "react";
 
-const MotorleistungCard = ({ motorleistung }) => {
-  const [selectedMotor, setSelectedMotor] = useState(false);
+const MotorleistungCard = ({ motorleistung, onSelectMotorleistung, isSelected  }) => {
 
-  const toggleSelected = () => setSelectedMotor(!selectedMotor);
+  const handleClick = () => {
+    if (!isSelected) {
+      onSelectMotorleistung(motorleistung);
+    }
+  };
+  
+
   return (
     <div
       className={`p-4 border-2 rounded-lg shadow-md transition-colors ${
-        selectedMotor
+        isSelected
           ? "border-green-500 hover:border-green-600"
           : "border-gray-200 hover:border-gray-300"
       }`}
+      onClick={handleClick}
     >
       <div className="flex items-start justify-between">
         <div>
@@ -23,11 +28,10 @@ const MotorleistungCard = ({ motorleistung }) => {
         <div>
           <div
             className={`w-6 h-6 rounded-full border-2 cursor-pointer flex items-center justify-center ${
-              selectedMotor ? "border-green-500 bg-green-500" : "border-gray-300"
+              isSelected ? "border-green-500 bg-green-500" : "border-gray-300"
             }`}
-            onClick={toggleSelected}
           >
-            {selectedMotor && (
+            {isSelected && (
               <svg
                 className="w-4 h-4 text-white"
                 fill="none"

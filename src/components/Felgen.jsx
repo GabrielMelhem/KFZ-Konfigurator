@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { BestellungContext } from "../context/BestellungContext";
+import FelgenCard from './FelgenCard';
 
 const apiUrl = `${process.env.REACT_APP_API_URL}/api/v1`;
 
-const Felgen = ({selectedModel}) => {
+const Felgen = ({ selectedFahrzeug }) => {
   const [felgen, setFelgen] = useState([]);
+  const { bestellung, updateBestellung } = useContext(BestellungContext);
 
   useEffect(() => {
-    fetch(`${apiUrl}/felgen/${selectedModel}`)
+    fetch(`${apiUrl}/felgen/${selectedFahrzeug.modell}`)
       .then((response) => response.json())
       .then((data) => {
         const mappedFelgen = data.map((felge) => ({
@@ -19,29 +22,32 @@ const Felgen = ({selectedModel}) => {
       .catch((error) =>
         console.error("Fehler beim Abrufen von Felgen:", error)
       );
-  }, []);
+  }, [selectedFahrzeug]);
 
-  const felgenList = felgen.map((felge) => {
-    return (
-      <div key={felge.id}>
-        <p>{felge.felgen_typ}</p>
-        <p>{felge.preis}</p>
-      </div>
-    );
-  });
+  const handleSelectFelgen = (selectedFelgen) => {
+    updateBestellung('felgen', selectedFelgen);
+  };
+
 
   return (
     <div>
-      Felgen
-      <div className="text-2xl font-bold  mb-4">{selectedModel}</div>
+      Felgen für {selectedFahrzeug.marke} 
+      <div className="text-2xl font-bold  mb-4">{selectedFahrzeug.modell}</div>
       <div>
-      {felgenList}
+        {felgen.map((felge) => (
+          <FelgenCard 
+          felge={felge} 
+          key={felge.id} 
+          onSelectFelgen={handleSelectFelgen}
+          isSelected={bestellung.felgen?.id === felge.id}
+        />
+        ))}
       </div>
-      
       <div>
-        <h2>Your current total is: EUR</h2>
+        <h2 className=" mt-7">
+          Ihr aktueller Gesamtbetrag ist: {bestellung.gesamtpreis} EUR
+        </h2>
       </div>
-      
     </div>
   );
 };

@@ -10,30 +10,30 @@ import Sonderausstattungen from "../components/Sonderausstattungen";
 const Home = () => {
   const [activeTab, setActiveTab] = useState("Marke");
   const [nextButtonVisible, setNextButtonVisible] = useState(true);
-  const [selectedModel, setSelectedModel] = useState(null);
+  const [selectedFahrzeug, setSelectedFahrzeug] = useState({marke: null, modell: null, preis: null});
 
   const renderContent = () => {
     switch (activeTab) {
       case "Marke":
-        return <Fahrzeuge onModelSelect={handleModelSelect} />;
+        return <Fahrzeuge onFahrzeugSelect={handleFahrzeugSelect} />;
       case "Motoren":
-        return <Motorleistungen selectedModel={selectedModel} />;
+        return <Motorleistungen selectedFahrzeug={selectedFahrzeug} />;
       case "Farben":
-        return <Lackierungen selectedModel={selectedModel} />;
+        return <Lackierungen selectedFahrzeug={selectedFahrzeug} />;
       case "Räder":
-        return <Felgen selectedModel={selectedModel} />;
+        return <Felgen selectedFahrzeug={selectedFahrzeug} />;
       case "Sonderausstattung":
-        return <Sonderausstattungen selectedModel={selectedModel}/>;
+        return <Sonderausstattungen selectedFahrzeug={selectedFahrzeug}/>;
       default:
         return null;
     }
   };
 
-  const handleModelSelect = (modell) => {
-    setSelectedModel(modell);
-
+  const handleFahrzeugSelect = (fahrzeug) => {
+    setSelectedFahrzeug(fahrzeug);
     setActiveTab("Motoren");
   };
+
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
