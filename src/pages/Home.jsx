@@ -6,6 +6,7 @@ import Lackierungen from "../components/Lackierungen";
 import Motorleistungen from "../components/Motorleistungen";
 import Navbar from "../components/Navbar";
 import Sonderausstattungen from "../components/Sonderausstattungen";
+import Zusammenfassung from "../components/Zusammenfassung";
 
 const Home = () => {
   const [activeTab, setActiveTab] = useState("Marke");
@@ -24,6 +25,8 @@ const Home = () => {
         return <Felgen selectedFahrzeug={selectedFahrzeug} />;
       case "Sonderausstattung":
         return <Sonderausstattungen selectedFahrzeug={selectedFahrzeug}/>;
+      case "Zusammenfassung":
+        return  <Zusammenfassung />
       default:
         return null;
     }
