@@ -1,6 +1,9 @@
 import React, { useContext } from "react";
 import { BestellungContext } from "../context/BestellungContext";
 import { useSubmitBestellung } from "../hooks/useSubmitBestellung";
+import ShareableLink from './ShareableLink';
+
+
 
 const Zusammenfassung = () => {
   const { bestellung } = useContext(BestellungContext);
@@ -114,6 +117,10 @@ const Zusammenfassung = () => {
           </div>
         )}
       </div>
+
+      <div>
+      {bestellung.bestellungUrl && <ShareableLink url={bestellung.bestellungUrl}/>}
+    </div>
     </div>
   );
 };

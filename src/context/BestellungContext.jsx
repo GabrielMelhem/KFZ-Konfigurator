@@ -11,6 +11,7 @@ export const BestellungProvider = ({ children }) => {
     sonderausstattung: [],
     gesamtpreis: 0,
     date: new Date().toDateString(),
+    bestellungUrl: null,
   });
 
   const updateBestellung = (key, value) => {
