@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import Fahrzeuge from "../components/Fahrzeuge";
-import Felgen from "../components/Felgen";
 import Footer from "../components/Footer";
-import Lackierungen from "../components/Lackierungen";
-import Motorleistungen from "../components/Motorleistungen";
 import Navbar from "../components/Navbar";
-import Sonderausstattungen from "../components/Sonderausstattungen";
-import Zusammenfassung from "../components/Zusammenfassung";
+import Fahrzeuge from "../components/fahrzeuge/Fahrzeuge";
+import Felgen from "../components/felgen/Felgen";
+import Lackierungen from "../components/lackierung/Lackierungen";
+import Motorleistungen from "../components/motorleistung/Motorleistungen";
+import Sonderausstattungen from "../components/sonderausstattung/Sonderausstattungen";
+import Zusammenfassung from "../components/zusammenfassung/Zusammenfassung";
 
 const Home = () => {
   const [activeTab, setActiveTab] = useState("Marke");

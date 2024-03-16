@@ -5,7 +5,7 @@ import {
   createRoutesFromElements
 } from "react-router-dom";
 import "./App.css";
-import Zusammenfassung from "./components/Zusammenfassung";
+import Zusammenfassung from "./components/zusammenfassung/Zusammenfassung";
 import { BestellungProvider } from "./context/BestellungContext";
 import ErrorPage from "./pages/ErrorPage";
 import Home from "./pages/Home";

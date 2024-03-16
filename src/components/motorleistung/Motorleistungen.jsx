@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { BestellungContext } from '../context/BestellungContext';
+import { BestellungContext } from '../../context/BestellungContext';
 import MotorleistungCard from "./MotorleistungCard";
 
 const apiUrl = `${process.env.REACT_APP_API_URL}/api/v1`;
@@ -11,7 +11,7 @@ const Motorleistungen = ({ selectedFahrzeug }) => {
 
   useEffect(() => {
     updateBestellung('fahrzeug',selectedFahrzeug );
-  }, []);
+  }, [selectedFahrzeug]);
 
   // console.log("bestellung",{bestellung} )
 
@@ -30,7 +30,7 @@ const Motorleistungen = ({ selectedFahrzeug }) => {
       .catch((error) =>
         console.error("Fehler beim Abrufen von Motorleistungen:", error)
       );
-  }, []);
+  }, [selectedFahrzeug.modell]);
 
   const handleSelectMotorleistung = (selectedMotorleistung) => {
      updateBestellung('motorleistung', selectedMotorleistung);

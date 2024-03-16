@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { BestellungContext } from "../context/BestellungContext";
+import { BestellungContext } from "../../context/BestellungContext";
 import FelgenCard from './FelgenCard';
 
 const apiUrl = `${process.env.REACT_APP_API_URL}/api/v1`;
