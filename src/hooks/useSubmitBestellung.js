@@ -6,7 +6,7 @@ const apiUrl = `${process.env.REACT_APP_API_URL}/api/v1`;
 export const useSubmitBestellung = () => {
   const { bestellung, updateBestellung } = useContext(BestellungContext);
   const [submitStatus, setSubmitStatus] = useState({ success: false, message: '' });
-  const [url,setUrl]=useState();
+  
 
   const submitBestellung = async () => {
     try {
@@ -22,21 +22,20 @@ export const useSubmitBestellung = () => {
         throw new Error('Failed to submit bestellung');
       }
       const savedBestellung = await response.json();
-      console.log("submittedBestellung",savedBestellung)
-      console.log("submitted url",savedBestellung.urlSlug)
+
 
       updateBestellung({
         isFinalized: true,
         url: savedBestellung.urlSlug,
       });
     
-      console.log("bestellung in submittion",bestellung);
+      console.log("bestellung in hooks",bestellung);
 
       
 
       
       // const bestellungUrl = `${window.location.origin}/bestellungen/${savedBestellung.urlSlug}`;
-      // updateBestellung('bestellungUrl', bestellungUrl);
+     
 
       setSubmitStatus({ success: true, message: 'Bestellung successfully submitted!' });
 

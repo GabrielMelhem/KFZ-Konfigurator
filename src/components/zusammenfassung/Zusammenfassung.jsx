@@ -1,30 +1,29 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { BestellungContext } from "../../context/BestellungContext";
 import { useSubmitBestellung } from "../../hooks/useSubmitBestellung";
+import ShareableLink from './ShareableLink';
 
 const Zusammenfassung = () => {
   const { bestellung, updateBestellung } = useContext(BestellungContext);
-  const [finalBestellung,setFinalBestellung]= useState({});
-  const [urlSlug,setUrlSulg]=useState(null);
+
+console.log("bestellung in zusammenfassung",bestellung)
 
   const { submitBestellung,finalizeBestellung,submitStatus } = useSubmitBestellung();
+  const bestellungUrl = `${window.location.origin}/bestellungen/${bestellung.url}`;
 
   const handleSubmit = async () => {
     try {
         const savedBestellung = await submitBestellung();
-
-        setUrlSulg(savedBestellung.urlSlug);
-        console.log("urlSlug",urlSlug)
-        // updateBestellung('bestellungUrl',urlSlug);
         
     } catch (error) {
-      console.error("Failed to save bestellung", error);
+      console.error("Failed to Submit bestellung", error);
     }
   }
 
   const handleClick =async()=>{
     try {
-        
+        console.log("bestellung2 url",bestellung.url)
+        await finalizeBestellung(bestellung.url);
 
   } catch (error) {
     console.error("Failed to send bestellung", error);
@@ -107,9 +106,7 @@ const Zusammenfassung = () => {
 
       <div className="mt-6">
         <p>Bestellung Datum: {bestellung.date}</p>
-      </div>
-
-      <div>
+      
         <button
           onClick={handleSubmit}
           className="mt-4 px-4 py-2 bg-blue-800 text-white rounded hover:bg-green-400"
@@ -131,12 +128,11 @@ const Zusammenfassung = () => {
           </div>
         )}
       </div>
-
-      {/* <div>
-        {bestellung.bestellungUrl && (
-          <ShareableLink url={bestellung.bestellungUrl} />
+      <div>
+        {submitStatus.message &&(
+          <ShareableLink url={bestellungUrl}/>
         )}
-      </div> */}
+      </div>
 
       {submitStatus.message && (
         <div>

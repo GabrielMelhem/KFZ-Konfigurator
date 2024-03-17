@@ -21,7 +21,6 @@ export const BestellungProvider = ({ children }) => {
       for (const key in updates) {
         updatedBestellung[key] = updates[key];
       }
-      
 
       updatedBestellung.gesamtpreis = calculateTotalPrice(updatedBestellung);
 
