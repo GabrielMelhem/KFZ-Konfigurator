@@ -14,7 +14,7 @@ import Home from "./pages/Home";
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<Home />} errorElement={<ErrorPage />}>
+      <Route path="/" errorElement={<ErrorPage />} >
         <Route index element={<Home />} />
         <Route path="/bestellungen/:slug" element={<Bestellungen />} />
       </Route>
@@ -23,7 +23,7 @@ function App() {
   return (
     <>
       <BestellungProvider>
-        <RouterProvider router={router} />;
+        <RouterProvider router={router} />
       </BestellungProvider>
     </>
   );

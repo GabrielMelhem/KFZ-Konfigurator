@@ -31,10 +31,6 @@ export const useSubmitBestellung = () => {
     
       console.log("bestellung in hooks",bestellung);
 
-      
-
-      
-      // const bestellungUrl = `${window.location.origin}/bestellungen/${savedBestellung.urlSlug}`;
      
 
       setSubmitStatus({ success: true, message: 'Bestellung successfully submitted!' });

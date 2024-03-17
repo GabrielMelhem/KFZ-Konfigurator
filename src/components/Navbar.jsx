@@ -8,7 +8,6 @@ const Navbar = ({ activeTab, onTabClick }) => {
     "Räder",
     "Sonderausstattung",
     "Zusammenfassung",
-    "Bestellung"
   ];
   return (
     <nav className="bg-gray-200 p-4">

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import Bestellungen from "../components/bestellungen/Bestellungen";
 import Fahrzeuge from "../components/fahrzeuge/Fahrzeuge";
 import Felgen from "../components/felgen/Felgen";
 import Lackierungen from "../components/lackierung/Lackierungen";
@@ -28,8 +27,6 @@ const Home = () => {
         return <Sonderausstattungen selectedFahrzeug={selectedFahrzeug}/>;
       case "Zusammenfassung":
         return  <Zusammenfassung />
-        case "Bestellung":
-        return  <Bestellungen />
       default:
         return null;
     }
