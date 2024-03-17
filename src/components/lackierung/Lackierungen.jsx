@@ -34,7 +34,7 @@ const Lackierungen = ({ selectedFahrzeug }) => {
     <div>
       Lackierung für {selectedFahrzeug.marke} 
       <div className="text-2xl font-bold  mb-4">{selectedFahrzeug.modell}</div>
-      <div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-4">
         {lackierungen.map((lackierung) => (
           <LackierungenCard 
           lackierung={lackierung} 
