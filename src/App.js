@@ -5,6 +5,9 @@ import {
   createRoutesFromElements
 } from "react-router-dom";
 import "./App.css";
+
+
+import Bestellungen from "./components/bestellungen/Bestellungen";
 import Felgen from "./components/felgen/Felgen";
 import Lackierungen from "./components/lackierung/Lackierungen";
 import Motorleistungen from "./components/motorleistung/Motorleistungen";
@@ -23,7 +26,8 @@ function App() {
         <Route path="/lackierungen" element={<Lackierungen />} />
         <Route path="/felgen" element={<Felgen />} />
         <Route path="/sonderaustattung" element={<Sonderausstattungen />} />
-        <Route path="/bestellungen/:slug" element={<Zusammenfassung />} />
+        <Route path="/zusammenfassung" element={<Zusammenfassung />} />
+        <Route path="/bestellungen/:slug" element={<Bestellungen />} />
       </Route>
     )
   );

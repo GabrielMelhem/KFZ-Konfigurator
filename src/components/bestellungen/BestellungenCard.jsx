@@ -1,43 +1,13 @@
-import React, { useContext } from "react";
-import { BestellungContext } from "../../context/BestellungContext";
-import { useSubmitBestellung } from "../../hooks/useSubmitBestellung";
-import ShareableLink from './ShareableLink';
 
-const Zusammenfassung = () => {
-  const { bestellung, updateBestellung } = useContext(BestellungContext);
 
-console.log("bestellung in zusammenfassung",bestellung)
-
-  const { submitBestellung,finalizeBestellung,submitStatus } = useSubmitBestellung();
-  const bestellungUrl = `${window.location.origin}/bestellungen/${bestellung.url}`;
-
-  const handleSubmit = async () => {
-    try {
-        const savedBestellung = await submitBestellung();
-        
-    } catch (error) {
-      console.error("Failed to Submit bestellung", error);
-    }
-  }
-
-  const handleClick =async()=>{
-    try {
-        console.log("bestellung2 url",bestellung.url)
-        await finalizeBestellung(bestellung.url);
-
-  } catch (error) {
-    console.error("Failed to send bestellung", error);
-  }
-  }
-
+const BestellungenCard = ({bestellung}) => {
+   
 
   return (
     <div className="mx-auto max-w-4xl w-full p-5 border rounded shadow-lg mt-10">
       <h2 className="text-3xl font-bold mb-4 text-center md:text-left">
-        Zusammenfassung Ihrer Konfiguration
+         Ihre Bestellung
       </h2>
-      
-
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {bestellung.fahrzeug && (
           <div className="mb-3">
@@ -48,6 +18,7 @@ console.log("bestellung in zusammenfassung",bestellung)
             <p>Preis: {bestellung.fahrzeug.preis} €</p>
           </div>
         )}
+
 
         {bestellung.motorleistung && (
           <div className="mb-3">
@@ -106,46 +77,9 @@ console.log("bestellung in zusammenfassung",bestellung)
 
       <div className="mt-6">
         <p>Bestellung Datum: {bestellung.date}</p>
-      
-        <button
-          onClick={handleSubmit}
-          className="mt-4 px-4 py-2 bg-blue-800 text-white rounded hover:bg-green-400"
-        >
-          Submit
-        </button>
-        {submitStatus.message && (
-          <div
-            style={{
-              marginTop: "20px",
-              padding: "10px",
-              backgroundColor: submitStatus.success
-                ? "lightgreen"
-                : "lightcoral",
-              color: "darkslategray",
-            }}
-          >
-            {submitStatus.message}
-          </div>
-        )}
       </div>
-      <div>
-        {submitStatus.message &&(
-          <ShareableLink url={bestellungUrl}/>
-        )}
-      </div>
-
-      {submitStatus.message && (
-        <div>
-          <button onClick={handleClick}
-            className="mt-4 px-4 py-2 bg-blue-800 text-white rounded hover:bg-green-400"
-          >
-            Add to Cart
-          </button>
-        </div>
-      )
-      }
     </div>
   );
-        };
+}
 
-export default Zusammenfassung;
+export default BestellungenCard
