@@ -67,8 +67,10 @@ const Home = () => {
   };
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Navbar activeTab={activeTab} onTabClick={handleTabClick} />
+      
+      <main className="flex-grow mx-10">
       <div className=" mx-10">
         <div className="flex flex-col items-center mt-8 text-3xl mb-4">
           <h1 className="text-3xl mb-4">Konfigurieren Sie Ihren Fahrzeuge</h1>
@@ -89,9 +91,9 @@ const Home = () => {
             )}
         </div>
       </div>
-
+      </main>
       <Footer />
-    </>
+    </div>
   );
 };
 

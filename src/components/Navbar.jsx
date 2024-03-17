@@ -10,7 +10,7 @@ const Navbar = ({ activeTab, onTabClick }) => {
     "Zusammenfassung",
   ];
   return (
-    <nav className="bg-gray-200 p-4">
+    <nav className="bg-gray-100 py-8 px-4 md:px-6 lg:px-8">
       <div className="flex justify-between">
         <div className="text-2xl font-bold">KFZ Konfigurator</div>
         <div className="flex space-x-4">
