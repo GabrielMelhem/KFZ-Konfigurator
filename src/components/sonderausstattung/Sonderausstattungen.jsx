@@ -35,7 +35,7 @@ const Sonderausstattungen = ({ selectedFahrzeug }) => {
     } else {
       newSelection = [...bestellung.sonderausstattung, selectedItem];
     }
-    updateBestellung("sonderausstattung", newSelection);
+    updateBestellung({sonderausstattung:newSelection});
   };
 
   return (

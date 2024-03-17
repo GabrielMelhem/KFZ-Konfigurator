@@ -10,7 +10,7 @@ const Motorleistungen = ({ selectedFahrzeug }) => {
   const { bestellung, updateBestellung } = useContext(BestellungContext);
 
   useEffect(() => {
-    updateBestellung('fahrzeug',selectedFahrzeug );
+    updateBestellung({fahrzeug:selectedFahrzeug });
   }, [selectedFahrzeug]);
 
   // console.log("bestellung",{bestellung} )
@@ -33,7 +33,7 @@ const Motorleistungen = ({ selectedFahrzeug }) => {
   }, [selectedFahrzeug.modell]);
 
   const handleSelectMotorleistung = (selectedMotorleistung) => {
-     updateBestellung('motorleistung', selectedMotorleistung);
+     updateBestellung({motorleistung:selectedMotorleistung});
   };
 
   return (

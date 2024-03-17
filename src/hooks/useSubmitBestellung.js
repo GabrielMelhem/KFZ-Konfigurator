@@ -6,6 +6,7 @@ const apiUrl = `${process.env.REACT_APP_API_URL}/api/v1`;
 export const useSubmitBestellung = () => {
   const { bestellung, updateBestellung } = useContext(BestellungContext);
   const [submitStatus, setSubmitStatus] = useState({ success: false, message: '' });
+  const [url,setUrl]=useState();
 
   const submitBestellung = async () => {
     try {
@@ -20,14 +21,25 @@ export const useSubmitBestellung = () => {
       if (!response.ok) {
         throw new Error('Failed to submit bestellung');
       }
+      const savedBestellung = await response.json();
+      console.log("submittedBestellung",savedBestellung)
+      console.log("submitted url",savedBestellung.urlSlug)
 
-      const responseData = await response.json();
+      updateBestellung({
+        isFinalized: true,
+        url: savedBestellung.urlSlug,
+      });
+    
+      console.log("bestellung in submittion",bestellung);
+
+      
+
+      
+      // const bestellungUrl = `${window.location.origin}/bestellungen/${savedBestellung.urlSlug}`;
+      // updateBestellung('bestellungUrl', bestellungUrl);
+
       setSubmitStatus({ success: true, message: 'Bestellung successfully submitted!' });
 
-      const bestellungUrl = `${window.location.origin}/bestellungen/${responseData.urlSlug}`;
-      updateBestellung('bestellungUrl', bestellungUrl);
-
-      console.log("bestellung",bestellung)
       
     } catch (error) {
       console.error('Error submitting bestellung:', error);
@@ -37,5 +49,26 @@ export const useSubmitBestellung = () => {
 
   };
 
-  return { submitBestellung, submitStatus };
+  const finalizeBestellung = async (urlSlug) => {
+    try {
+      const response = await fetch(`${apiUrl}/bestellungen/${urlSlug}/finalize`, {
+        method: 'PUT', 
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ isFinalized: true }),
+      });
+  
+      if (response.ok) {
+        updateBestellung('isFinalized', true);
+      }else {
+        throw new Error('Failed to finalize bestellung');
+      }
+      
+    } catch (error) {
+      console.error("Failed to finalize bestellung", error);
+    }
+  };
+
+  return { submitBestellung,finalizeBestellung,submitStatus };
 };

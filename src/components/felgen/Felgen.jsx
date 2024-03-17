@@ -25,7 +25,7 @@ const Felgen = ({ selectedFahrzeug }) => {
   }, [selectedFahrzeug]);
 
   const handleSelectFelgen = (selectedFelgen) => {
-    updateBestellung('felgen', selectedFelgen);
+    updateBestellung({felgen:selectedFelgen});
   };
 
 

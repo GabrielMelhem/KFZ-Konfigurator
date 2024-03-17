@@ -11,19 +11,18 @@ export const BestellungProvider = ({ children }) => {
     sonderausstattung: [],
     gesamtpreis: 0,
     date: new Date().toDateString(),
-    bestellungUrl: null,
+    url: null,
+    isFinalized: false
   });
 
-  const updateBestellung = (key, value) => {
+  const updateBestellung = (updates) => {
     setBestellung((prevBestellung) => {
-      // Create a new object with updated values
-      const updatedBestellung = {
-        ...prevBestellung,
-        [key]: value,
-        date: new Date().toDateString(),
-      };
+      let updatedBestellung = { ...prevBestellung, date: new Date().toDateString() };
+      for (const key in updates) {
+        updatedBestellung[key] = updates[key];
+      }
+      
 
-      // Calculate and update the total price
       updatedBestellung.gesamtpreis = calculateTotalPrice(updatedBestellung);
 
       return updatedBestellung;

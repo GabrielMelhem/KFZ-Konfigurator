@@ -27,7 +27,7 @@ const Lackierungen = ({ selectedFahrzeug }) => {
   console.log("bestellung",{bestellung} )
 
   const handleSelectLackierung = (selectedLackierung) => {
-    updateBestellung('lackierung', selectedLackierung);
+    updateBestellung({lackierung:selectedLackierung});
   };
 
   return (
