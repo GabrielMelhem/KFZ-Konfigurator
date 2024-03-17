@@ -7,13 +7,11 @@ const apiUrl = `${process.env.REACT_APP_API_URL}/api/v1`;
 
 const Bestellungen = () => {
   const { bestellung, updateBestellung } = useContext(BestellungContext);
-  console.log("bestellung",bestellung)
+  console.log("bestellung", bestellung);
   const { bestellungUrl } = useParams();
 
-  console.log("bestellungUrl",bestellungUrl)
+  console.log("bestellungUrl", bestellungUrl);
 
-
-  
   useEffect(() => {
     fetch(`${apiUrl}/bestellungen/${bestellungUrl}`)
       .then((response) => response.json())
@@ -29,15 +27,15 @@ const Bestellungen = () => {
           url: data.urlSlug,
           isFinalized: data.isFinalized,
         });
-        
       })
       .catch((error) =>
         console.error("Fehler beim Abrufen von Bestellungen:", error)
       );
   }, []);
-  return <div>Bestellungen
+  return(
+  <div>
     <BestellungenCard bestellung={bestellung} />;
-  </div>;
+  </div>);
 };
 
 export default Bestellungen;

@@ -6,7 +6,7 @@ const BestellungenCard = ({bestellung}) => {
   return (
     <div className="mx-auto max-w-4xl w-full p-5 border rounded shadow-lg mt-10">
       <h2 className="text-3xl font-bold mb-4 text-center md:text-left">
-         Ihre Bestellung
+         Danke für Ihre Bestellung
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {bestellung.fahrzeug && (
@@ -78,6 +78,8 @@ const BestellungenCard = ({bestellung}) => {
       <div className="mt-6">
         <p>Bestellung Datum: {bestellung.date}</p>
       </div>
+
+      
     </div>
   );
 }
