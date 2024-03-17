@@ -25,7 +25,7 @@ export const useSubmitBestellung = () => {
 
 
       updateBestellung({
-        isFinalized: true,
+        // isFinalized: true,
         url: savedBestellung.urlSlug,
       });
     

@@ -60,6 +60,27 @@ export const BestellungProvider = ({ children }) => {
     return totalPrice;
   };
 
+  // useEffect(() => {
+  //   fetch(`${apiUrl}/bestellungen/${bestellungUrl}`)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       updateBestellung({
+  //         fahrzeug: data.fahrzeug,
+  //         motorleistung: data.motorleistung,
+  //         lackierung: data.lackierung,
+  //         felgen: data.felgen,
+  //         sonderausstattung: data.sonderausstattung,
+  //         gesamtpreis: data.gesamtpreis,
+  //         date: data.date,
+  //         url: data.urlSlug,
+  //         isFinalized: data.isFinalized,
+  //       });
+  //     })
+  //     .catch((error) =>
+  //       console.error("Fehler beim Abrufen von Bestellungen:", error)
+  //     );
+  // },[])
+
   return (
     <BestellungContext.Provider value={{ bestellung, updateBestellung }}>
       {children}
