@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { BestellungContext } from "../../context/BestellungContext";
 import { useSubmitBestellung } from "../../hooks/useSubmitBestellung";
-import ShareableLink from '../ShareableLink';
+import ShareableLink from './ShareableLink';
 
 
 
