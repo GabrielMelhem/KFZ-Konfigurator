@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { BestellungContext } from "../../context/BestellungContext";
 import { useSubmitBestellung } from "../../hooks/useSubmitBestellung";
-import ShareableLink from './ShareableLink';
 
 const Zusammenfassung = () => {
   const { bestellung, updateBestellung } = useContext(BestellungContext);
@@ -10,6 +10,7 @@ console.log("bestellung in zusammenfassung",bestellung)
 
   const { submitBestellung,finalizeBestellung,submitStatus } = useSubmitBestellung();
   const bestellungUrl = `${window.location.origin}/bestellungen/${bestellung.url}`;
+
 
   const handleSubmit = async () => {
     try {
@@ -129,8 +130,8 @@ console.log("bestellung in zusammenfassung",bestellung)
         )}
       </div>
       <div>
-        {submitStatus.message &&(
-          <ShareableLink url={bestellungUrl}/>
+        {submitStatus.message && bestellungUrl && (
+          <p>Ihr Link zum Teilen: <Link to={`/bestellungen/${bestellung.url}`}>{bestellungUrl}</Link></p>
         )}
       </div>
 
