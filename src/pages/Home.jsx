@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Fahrzeuge from "../components/fahrzeuge/Fahrzeuge";
@@ -7,11 +7,13 @@ import Lackierungen from "../components/lackierung/Lackierungen";
 import Motorleistungen from "../components/motorleistung/Motorleistungen";
 import Sonderausstattungen from "../components/sonderausstattung/Sonderausstattungen";
 import Zusammenfassung from "../components/zusammenfassung/Zusammenfassung";
+import { BestellungContext } from '../context/BestellungContext';
 
 const Home = () => {
   const [activeTab, setActiveTab] = useState("Marke");
   const [nextButtonVisible, setNextButtonVisible] = useState(true);
   const [selectedFahrzeug, setSelectedFahrzeug] = useState({marke: null, modell: null, preis: null});
+  const { resetToDefaultState } = useContext(BestellungContext);
 
   const renderContent = () => {
     switch (activeTab) {
@@ -67,7 +69,7 @@ const Home = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-gray-50">
       <Navbar activeTab={activeTab} onTabClick={handleTabClick} />
       
       <main className="flex-grow mx-10">
@@ -75,8 +77,9 @@ const Home = () => {
         <div className="flex flex-col items-center mt-8 text-3xl mb-4">
           <h1 className="text-3xl mb-4">Konfigurieren Sie Ihren Fahrzeuge</h1>
         </div>
+        <button className="m-5" onClick={resetToDefaultState}>Start New Configuration</button>
 
-        <div className=" m-5">{renderContent()}</div>
+        <div className="m-5">{renderContent()}</div>
 
         <div>
           {activeTab !== "Marke" &&

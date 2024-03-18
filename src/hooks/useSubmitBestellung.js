@@ -4,7 +4,7 @@ import { BestellungContext } from '../context/BestellungContext';
 const apiUrl = `${process.env.REACT_APP_API_URL}/api/v1`;
 
 export const useSubmitBestellung = () => {
-  const { bestellung, updateBestellung } = useContext(BestellungContext);
+  const { bestellung, updateBestellung,finalizBestellung } = useContext(BestellungContext);
   const [submitStatus, setSubmitStatus] = useState({ success: false, message: '' });
   
 
@@ -55,7 +55,7 @@ export const useSubmitBestellung = () => {
       });
   
       if (response.ok) {
-        updateBestellung('isFinalized', true);
+        updateBestellung({isFinalized:true});
       }else {
         throw new Error('Failed to finalize bestellung');
       }
