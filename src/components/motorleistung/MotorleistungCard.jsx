@@ -20,7 +20,7 @@ const MotorleistungCard = ({ motorleistung, onSelectMotorleistung, isSelected  }
       <div className="flex items-start justify-between">
         <div>
           <h3 className="text-lg font-bold">{motorleistung.motor_name}</h3>
-          <p className="text-sm text-gray-600">{motorleistung.leistung}</p>
+          <p className="text-sm text-gray-600">{motorleistung.leistung} kW (204 PS)</p>
           <div className="mt-2">
             <span className="text-lg font-bold">{motorleistung.preis} €</span>
           </div>
