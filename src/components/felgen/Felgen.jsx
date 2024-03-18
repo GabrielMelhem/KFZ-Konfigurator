@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { BestellungContext } from "../../context/BestellungContext";
-import FelgenCard from './FelgenCard';
+import BilderCarousel from "../BilderCarousel";
+import FelgenCard from "./FelgenCard";
 
 const apiUrl = `${process.env.REACT_APP_API_URL}/api/v1`;
 
@@ -25,27 +26,37 @@ const Felgen = ({ selectedFahrzeug }) => {
   }, [selectedFahrzeug]);
 
   const handleSelectFelgen = (selectedFelgen) => {
-    updateBestellung({felgen:selectedFelgen});
+    updateBestellung({ felgen: selectedFelgen });
   };
-
 
   return (
     <div>
-      Felgen für {selectedFahrzeug.marke} 
+      Felgen für {selectedFahrzeug.marke}
       <div className="text-2xl font-bold  mb-4">{selectedFahrzeug.modell}</div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
-        {felgen.map((felge) => (
-          <FelgenCard 
-          felge={felge} 
-          key={felge.id} 
-          onSelectFelgen={handleSelectFelgen}
-          isSelected={bestellung.felgen?.id === felge.id}
-        />
-        ))}
+      <div className="flex flex-wrap w-full">
+        <div className="w-full lg:w-1/3">
+          <BilderCarousel />
+        </div>
+        <div className="w-full lg:w-2/3 flex flex-wrap">
+          {felgen.map((felge) => (
+            <div className="w-full md:w-1/2 lg:w-1/3 xl:w-1/3 p-2">
+              <FelgenCard
+                felge={felge}
+                key={felge.id}
+                onSelectFelgen={handleSelectFelgen}
+                isSelected={bestellung.felgen?.id === felge.id}
+              />
+            </div>
+          ))}
+        </div>
       </div>
-      <div>
-        <h2 className=" mt-7">
-          Ihr aktueller Gesamtbetrag ist: {bestellung.gesamtpreis} EUR
+      <div className="lg:w-1/3 w-full mt-7 p-4 border-2 rounded-lg shadow-md">
+        <h2>
+          Ihr aktueller Gesamtbetrag ist:
+          <span className="font-bold p-2 border-2 rounded-lg mx-1">
+            {bestellung.gesamtpreis}
+          </span>
+          €
         </h2>
       </div>
     </div>

@@ -1,16 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
-import { BestellungContext } from '../../context/BestellungContext';
+import { BestellungContext } from "../../context/BestellungContext";
+import BilderCarousel from "../BilderCarousel";
 import MotorleistungCard from "./MotorleistungCard";
 
 const apiUrl = `${process.env.REACT_APP_API_URL}/api/v1`;
 
 const Motorleistungen = ({ selectedFahrzeug }) => {
-
   const [motorleistungen, setMotorleistungen] = useState([]);
   const { bestellung, updateBestellung } = useContext(BestellungContext);
 
   useEffect(() => {
-    updateBestellung({fahrzeug:selectedFahrzeug });
+    updateBestellung({ fahrzeug: selectedFahrzeug });
   }, [selectedFahrzeug]);
 
   // console.log("bestellung",{bestellung} )
@@ -33,25 +33,38 @@ const Motorleistungen = ({ selectedFahrzeug }) => {
   }, [selectedFahrzeug.modell]);
 
   const handleSelectMotorleistung = (selectedMotorleistung) => {
-     updateBestellung({motorleistung:selectedMotorleistung});
+    updateBestellung({ motorleistung: selectedMotorleistung });
   };
 
   return (
     <div>
-      Motorleistungen für {selectedFahrzeug.marke} 
+      Motorleistungen für {selectedFahrzeug.marke}
       <div className="text-2xl font-bold  mb-4">{selectedFahrzeug.modell}</div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
-        {motorleistungen.map((motorleistung) => (
-          <MotorleistungCard
-            key={motorleistung.id}
-            motorleistung={motorleistung}
-            onSelectMotorleistung={handleSelectMotorleistung}
-            isSelected={bestellung.motorleistung?.id === motorleistung.id}
-          />
-        ))}
+      <div className="flex flex-wrap w-full">
+        <div className="w-full lg:w-1/3">
+          <BilderCarousel />
+        </div>
+        <div className="w-full lg:w-2/3 flex flex-wrap">
+          {motorleistungen.map((motorleistung) => (
+            <div className="w-full md:w-1/2 lg:w-1/3 xl:w-1/3 p-2">
+              <MotorleistungCard
+                key={motorleistung.id}
+                motorleistung={motorleistung}
+                onSelectMotorleistung={handleSelectMotorleistung}
+                isSelected={bestellung.motorleistung?.id === motorleistung.id}
+              />
+            </div>
+          ))}
+        </div>
       </div>
-      <div>
-        <h2 className=" mt-7">Ihr aktueller Gesamtbetrag ist:  {bestellung.gesamtpreis} EUR</h2>
+      <div className="lg:w-1/3 w-full mt-7 p-4 border-2 rounded-lg shadow-md">
+        <h2>
+          Ihr aktueller Gesamtbetrag ist:
+          <span className="font-bold p-2 border-2 rounded-lg mx-1">
+            {bestellung.gesamtpreis}
+          </span>
+          €
+        </h2>
       </div>
     </div>
   );
